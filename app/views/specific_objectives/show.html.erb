@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @specific_objective.name %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @specific_objective.comments %>
+</p>
+
+<%= link_to 'Edit', edit_specific_objective_path(@specific_objective) %> |
+<%= link_to 'Back', specific_objectives_path %>
