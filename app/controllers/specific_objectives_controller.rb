@@ -26,6 +26,18 @@ class SpecificObjectivesController < ApplicationController
   def create
     @specific_objective = SpecificObjective.new(specific_objective_params)
 
+    # {"file"=>#<ActionDispatch::Http::UploadedFile:0x00007fc435f945d8 @tempfile=#<Tempfile:/var/folders/gy/9pc2wkcx7c9_jhnj764j4ch40000gn/T/RackMultipart20190115-26490-1jzt3ks.png>, @original_filename="A 1h da Pavia, 1h30 2h e 3h.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"specific_objective[documents_attributes][1547561510128][file]\"; filename=\"A 1h da Pavia, 1h30 2h e 3h.png\"\r\nContent-Type: image/png\r\n">}}
+
+    # site = Sharepoint::Site.new 'arera.sharepoint.com', 'sites/Test_Programmazione'
+    # site.session.authenticate 'ibuetti@arera.it', 'Santiago2018'
+    # puts "---> #{site.inspect}"
+    # folder  = site.folder '/sites/Test_Programmazione/Documents'
+    #
+    # puts "----> #{params.inspect}"
+    # uploaded_io = params[:file]
+    # folder.add_file(uploaded_io.original_filename, uploaded_io.read)
+
+
     respond_to do |format|
       if @specific_objective.save
         format.html { redirect_to @specific_objective, notice: 'Specific objective was successfully created.' }
@@ -69,6 +81,6 @@ class SpecificObjectivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def specific_objective_params
-      params.require(:specific_objective).permit(:name, :comments)
+      params.require(:specific_objective).permit(:name, :comments, documents_attributes: [ :file ])
     end
 end

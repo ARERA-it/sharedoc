@@ -1,24 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <h1>Elenco</h1>
 
-  <tbody>
-    <% @pages.each do |page| %>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nome file</th>
+        <th>URL</th>
+        <th>Autore</th>
+        <th>Ultima modifica</th>
+        <th>Minor vers.</th>
+        <th>Major vers.</th>
+        <th>Nro di vers.</th>
+        <th>checked_out_by_user</th>
+        <th>locked_by_user</th>
+        <th>check_out_type</th>
+        <th>server_relative_url</th>
+        <th>unique_id</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @files.each do |f| %>
+        <tr>
+          <td><%= f.name %></td>
+          <td><%= link_to f.name, f.linking_url, target: "_blank" if !f.linking_url.blank? %></td>
+          <td><%= f.author.title %></td>
+          <td><%= f.time_last_modified %></td>
+          <td><%= f.minor_version %></td>
+          <td><%= f.major_version %></td>
+          <td><%= f.versions.size %></td>
+          <td><%= f.checked_out_by_user.try(:title) %></td>
+          <td><%= f.locked_by_user.try(:title) %></td>
+          <td><%= f.check_out_type %></td>
+          <td><%= f.server_relative_url %></td>
+          <td><%= f.unique_id %></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
+
 
 <br>
 

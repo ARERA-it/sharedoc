@@ -13,4 +13,25 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+
+//= require jquery
+//= require bootstrap-sprockets
+
 //= require_tree .
+
+
+$(document).on("turbolinks:load", function() {
+  $("[data-form-prepend]").click(function(e) {
+    console.log("ecco");
+    var obj = $($(this).attr("data-form-prepend"));
+    obj.find("input, select, textarea").each(function() {
+      $(this).attr("name", function() {
+        return $(this)
+          .attr("name")
+          .replace("new_record", new Date().getTime());
+      });
+    });
+    obj.insertBefore(this);
+    return false;
+  });
+});

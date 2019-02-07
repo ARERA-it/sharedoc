@@ -63,3 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'sharepoint-ruby', github: 'iwan/sharepoint-ruby'
 gem 'figaro'
+gem 'bootstrap-sass', '~> 3.4.0'
+gem 'sassc-rails', '>= 2.0.0'
+gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'momentjs-rails' # https://github.com/derekprior/momentjs-rails

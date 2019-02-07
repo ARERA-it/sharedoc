@@ -11,17 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comments %>
-    <%= form.text_area :comments %>
-  </div>
+  <%= render 'fields', specific_objective: specific_objective, form: form, ro: false %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salva", class: "btn btn-primary" %>
+    <%= link_to 'Annulla', specific_objectives_path, class: "btn btn-default" %>
+    <% if @specific_objective.id %>
+      <%= link_to 'Dettaglio', @specific_objective, class: "btn btn-default" %>
+    <% end %>
   </div>
+
 <% end %>

@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_01_15_104303) do
 
   create_table "documents", force: :cascade do |t|
+    t.integer "specific_objective_id"
     t.string "unique_id"
     t.string "filename"
     t.string "author"

@@ -1,0 +1,16 @@
+<div class="form-group">
+  <%= form.label :name, "Nome" %>
+  <%= form.text_field :name, class: "form-control", readonly: ro %>
+</div>
+
+<div class="form-group">
+  <%= form.label :comments, "Commenti" %>
+  <%= form.text_area :comments, class: "form-control", readonly: ro %>
+</div>
+
+<% specific_objective.documents.each do |document| %>
+  <%= form.fields_for :documents, document do |f| %>
+    <%= render 'document_fields', f: f %>
+  <% end %>
+<% end %>
+<%= link_to_add_fields 'Aggiungi documento', form, :documents, nil, class: 'btn btn-link' %>
