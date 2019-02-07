@@ -13,17 +13,17 @@ una manciata di variabili:
 
 # Uso
 
-``ruby
+```ruby
 so = SpecificObjective.find 8
 
 documents = so.documents
 doc = documents.first
 
 sp_file = doc.sharepoint_file
-``
+```
 
 Lista degli attributi di `sp_file`:
-``
+```
 :author,
 :checked_out_by_user,
 :effective_information_rights_management_settings,
@@ -55,7 +55,7 @@ Lista degli attributi di `sp_file`:
 :ui_version,
 :ui_version_label,
 :unique_id
-``
+```
 
 
 E' possibile modificare lo 'stato' di un documento mediante le seguenti funzioni:
