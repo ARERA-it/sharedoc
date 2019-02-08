@@ -8,22 +8,35 @@
   <%= render 'fields', specific_objective: @specific_objective, form: form, ro: true %>
 <% end %>
 
+
+<h3>Documenti allegati</h3>
+
 <table class="table">
   <thead>
     <tr>
       <th>Id Sharepoint</th>
       <th>Nome file</th>
       <th>Autore</th>
+      <th>Stato</th>
+      <th>Modifica</th>
     </tr>
   </thead>
 
   <tbody>
     <% @specific_objective.documents.each do |document| %>
-      <% sp_doc = document.sharepoint_file %>
+      <% sp_file = document.sharepoint_file %>
       <tr>
         <td><%= document.unique_id %></td>
-        <td><%= link_to_if !sp_doc.linking_url.blank?, document.filename, sp_doc.linking_url, target: "_blank" %></td>
+        <td><%= link_to_if !sp_file.linking_url.blank?, document.filename, sp_file.linking_url, target: "_blank" %></td>
         <td><%= document.author %></td>
+        <td><%= file_status_string(sp_file) %></td>
+        <td>
+          <% if file_status(sp_file) == :checked_out %>
+            <%= link_to "check in", checkin_path(sp_file.unique_id) %>
+          <% elsif file_status(sp_file) == :checked_in %>
+            <%= link_to "check out", checkout_path(sp_file.unique_id) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

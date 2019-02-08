@@ -2,11 +2,12 @@
 #
 # Table name: specific_objectives
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  comments   :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string
+#  comments        :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  blurring_folder :string(50)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

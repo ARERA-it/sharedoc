@@ -3,7 +3,7 @@
 ## Impostazioni necessarie
 
 Per utilizzare correttamente l'app è necessario configurare tramite variabili d'ambiente
-una manciata di variabili:
+una manciata di variabili (qui vengono scritte in 'config/application.yml' e utilizzate con la gemma 'figaro'):
 - `host`, ad es.: 'acme.sharepoint.com'
 - `base_path`, ad es. 'sites/Testing_something'
 - `username`, ad es.: 'olaf@email.me'
@@ -62,3 +62,18 @@ E' possibile modificare lo 'stato' di un documento mediante le seguenti funzioni
 - `checkout`
 - `checkin`
 - `publish`
+
+
+
+Creazione delle cartelle su Sharepoint:
+```
+site = SharepointSite.new
+
+site.folder.add_folder("lev_1/lev_2") # Errore!
+
+# devo creare un livello alla volta:
+
+site.folder.add_folder("lev_1")
+site.folder("lev_1").add_folder("lev_2")
+
+```

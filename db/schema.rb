@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_104303) do
+ActiveRecord::Schema.define(version: 2019_02_07_173418) do
 
   create_table "documents", force: :cascade do |t|
     t.integer "specific_objective_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_104303) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "blurring_folder", limit: 50
   end
 
 end

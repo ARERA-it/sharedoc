@@ -17,9 +17,12 @@ class Document < ApplicationRecord
 
   before_save do |d|
     site = SharepointSite.new
-    so_folder = specific_objective.sharepoint_folder
-    site.folder.add_folder(so_folder)
-    folder = site.folder(so_folder)
+    folders = specific_objective.sharepoint_folder # ["ob_spec_8", "aamjjsduja"]
+    folders.each_with_index do |folder, idx|
+      # creo i 2 livelli di cartelle
+      site.folder(File.join(folders[0...idx])).add_folder(folder)
+    end
+    folder = site.folder(File.join(folders))
     f = folder.add_file(file.original_filename, file.read)
     d.filename = file.original_filename
     d.unique_id = f.unique_id
